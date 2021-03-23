@@ -1,0 +1,7 @@
+{
+  "name": "beaconsIonic",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
