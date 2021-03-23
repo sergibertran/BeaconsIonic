@@ -12,9 +12,20 @@ export class HomePage {
 
   startScan(){
 
-  this.BeaconConnectionService;
+
+  this.BeaconConnectionService.doScan();
 
   }
+
+  stopScan(){
+
+    this.BeaconConnectionService.doStop();
+
+    }
+
+
+
+
 
 
 }
