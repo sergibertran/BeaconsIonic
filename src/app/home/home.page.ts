@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { BeaconConnectionService } from '../services/beacon-connection.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -7,6 +7,14 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private BeaconConnectionService: BeaconConnectionService) {}
+
+
+  startScan(){
+
+  this.BeaconConnectionService;
+
+  }
+
 
 }
