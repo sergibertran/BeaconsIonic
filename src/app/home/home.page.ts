@@ -39,9 +39,6 @@ export class HomePage implements OnInit {
   scannedItems() {
     this.kontaktDevices = this.BeaconConnectionService.getDevices();
   }
-  deleteArray() {
-    this.BeaconConnectionService.borrarArray();
-  }
 
   viewItem(item) {
     this.meters = Math.round(Math.pow(10, (-69 - item.rssi) / (10 * 2)));
