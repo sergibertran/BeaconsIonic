@@ -9,24 +9,24 @@ import { interval } from 'rxjs';
 export class HomePage implements OnInit {
   kontaktDevices: any[] = [];
   sub1: any;
-  sub2: any;
+
   meters: any;
 
-  constructor(private BeaconConnectionService: BeaconConnectionService) {
-
-
-
-  }
+  constructor(private BeaconConnectionService: BeaconConnectionService) {}
 
   ngOnInit() {
-    this.sub1 = interval(2000).subscribe((x) => {
-      console.log('2secons');
+    interval(15000).subscribe((x) => {
+      console.log('scan');
+
       this.startScan();
-      this.scannedItems();
     });
 
+    interval(1000).subscribe((x) => {
+      console.log('refresh');
 
- }
+      this.scannedItems();
+    });
+  }
 
   startScan() {
     this.BeaconConnectionService.doScan();
@@ -35,21 +35,25 @@ export class HomePage implements OnInit {
   stopScan() {
     this.BeaconConnectionService.doStop();
     this.sub1.unsubscribe();
-    this.sub2.unsubscribe(); //x quina rao la de 6 no es para
   }
   scannedItems() {
     this.kontaktDevices = this.BeaconConnectionService.getDevices();
   }
-
-  viewItem(item) {
-
-
-
-    this.meters=Math.round(Math.pow(10,((-69 - (item.rssi))/(10 * 2))))
-
-
-    alert('RSSI: ' + item.rssi+ ' Concretamente a '+this.meters+' metros');
+  deleteArray() {
+    this.BeaconConnectionService.borrarArray();
   }
 
+  viewItem(item) {
+    this.meters = Math.round(Math.pow(10, (-69 - item.rssi) / (10 * 2)));
 
+    alert(
+      'RSSI: ' +
+        item.rssi +
+        ' Concretamente a ' +
+        this.meters +
+        ' metros' +
+        ' con id ' +
+        item.id
+    );
+  }
 }

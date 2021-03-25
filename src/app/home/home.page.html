@@ -10,15 +10,18 @@
         </ion-button>
       </ion-buttons>
 
-
       <ion-title>Bluetooth BLE</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-list [ngStyle]="{'background': device.rssi > -85 ? 'red' : device.rssi < -85 ? 'green' : 'yellow' }"  *ngFor="let device of kontaktDevices">
-
-    <ion-item (click)="viewItem(device)"> {{device.name}} </ion-item>
-
+  Total Devices: {{kontaktDevices.length}}
+  <ion-list
+    [ngStyle]="{'background': device.rssi > -65 && device.rssi < 0  ? 'green' : device.rssi > -72 && device.rssi < 65? 'yellow' : device.rssi > -86 && device.rssi < 72? 'orange' : 'red'}"
+    *ngFor="let device of kontaktDevices"
+  >
+    <ion-item (click)="viewItem(device)"
+      >{{device.name}} RSSI: {{device.rssi}} ID: {{device.id}} Metrs:
+      {{device.meters}}
+    </ion-item>
   </ion-list>
-
 </ion-content>
