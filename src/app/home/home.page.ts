@@ -25,6 +25,8 @@ export class HomePage implements OnInit {
       console.log('refresh');
 
       this.scannedItems();
+
+
     });
   }
 
@@ -38,19 +40,21 @@ export class HomePage implements OnInit {
   }
   scannedItems() {
     this.kontaktDevices = this.BeaconConnectionService.getDevices();
+
+
   }
 
   viewItem(item) {
-    this.meters = Math.round(Math.pow(10, (-69 - item.rssi) / (10 * 2)));
+    this.meters = Math.round(Math.pow(10, (-69 - item[1].rssi) / (10 * 2)));
 
     alert(
       'RSSI: ' +
-        item.rssi +
+        item[1].rssi +
         ' Concretamente a ' +
         this.meters +
         ' metros' +
         ' con id ' +
-        item.id
+        item[1].id
     );
   }
 }

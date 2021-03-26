@@ -16,12 +16,12 @@
 
   Total Devices: {{kontaktDevices.length}}
   <ion-list
-    [ngStyle]="{'background': device.rssi > -65 && device.rssi < 0  ? 'green' : device.rssi > -72 && device.rssi < 65? 'yellow' : device.rssi > -86 && device.rssi < 72? 'orange' : 'red'}"
+    [ngStyle]="{'background': device[1].rssi > -65 && device[1].rssi < 0  ? 'green' : device[1].rssi > -72 && device[1].rssi < 65? 'yellow' : device[1].id == 'F5:0F:CA:33:DF:A0'? 'blue' : device[1].rssi > -86 && device[1].rssi < 72? 'orange' : 'red'}"
     *ngFor="let device of kontaktDevices"
   >
     <ion-item (click)="viewItem(device)"
-      >{{device.name}} RSSI: {{device.rssi}} ID: {{device.id}} Metrs:
-      {{device.meters}}
+      >{{device[1].name}} RSSI: {{device[1].rssi}} ID: {{device[1].id}} Metrs:
+      {{device[1].meters}}
     </ion-item>
   </ion-list>
 </ion-content>
