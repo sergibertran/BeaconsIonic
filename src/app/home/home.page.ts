@@ -46,7 +46,9 @@ export class HomePage implements OnInit {
 
   viewItem(item) {
     this.meters = Math.round(Math.pow(10, (-69 - item[1].rssi) / (10 * 2)));
-
+    var adData = new Uint8Array(item[1].advertising);
+    var enc = new TextDecoder("utf-8");
+    console.log(enc.decode(adData));
     alert(
       'RSSI: ' +
         item[1].rssi +
@@ -54,7 +56,9 @@ export class HomePage implements OnInit {
         this.meters +
         ' metros' +
         ' con id ' +
-        item[1].id
+        item[1].id+" i tmb "
     );
   }
+
+
 }

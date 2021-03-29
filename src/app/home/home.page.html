@@ -16,7 +16,7 @@
 
   Total Devices: {{kontaktDevices.length}}
   <ion-list
-    [ngStyle]="{'background': device[1].rssi > -65 && device[1].rssi < 0  ? 'green' : device[1].rssi > -72 && device[1].rssi < 65? 'yellow' : device[1].id == 'F5:0F:CA:33:DF:A0'? 'blue' : device[1].rssi > -86 && device[1].rssi < 72? 'orange' : 'red'}"
+    [ngStyle]="{'background': device[1].id == 'F5:0F:CA:33:DF:A0'? 'blue' : device[1].rssi > -65 && device[1].rssi < 0  ? 'green' : device[1].rssi > -72 && device[1].rssi < 65? 'yellow' : device[1].rssi > -86 && device[1].rssi < 72? 'orange' : 'red'}"
     *ngFor="let device of kontaktDevices"
   >
     <ion-item (click)="viewItem(device)"

@@ -15,6 +15,7 @@ export class BeaconConnectionService {
   doScan() {
 
 
+    this.ble.isLocationEnabled();
 
 
     this.ble.startScan([]).subscribe((device) => {
@@ -78,4 +79,7 @@ export class BeaconConnectionService {
       return 0;
     });
   }
+
+
+
 }
